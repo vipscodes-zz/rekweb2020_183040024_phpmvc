@@ -8,7 +8,6 @@ class App
 	public function __construct()
 	{
 		$url = $this->parseURL();
-
 		// cek NULL
 		if ($url == NULL) {
 			$url = [$this->controller];
