@@ -1,4 +1,5 @@
 <?php
+
 class Database
 {
     private $host = DB_HOST;
@@ -6,17 +7,17 @@ class Database
     private $pass = DB_PASS;
     private $db_name = DB_NAME;
 
-    private $dth;
+    private $dbh;
     private $stmt;
 
     public function __construct()
     {
-        //data source name
+        // data source name
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
 
         $option = [
             PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => true
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
 
         try {
@@ -46,7 +47,6 @@ class Database
                     break;
                 default:
                     $type = PDO::PARAM_STR;
-                    break;
             }
         }
 
